@@ -1,8 +1,25 @@
-# photo-video-triage
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/brand/banner-dark.svg">
+  <img src=".github/brand/banner-light.svg" width="100%" alt="Photo & Video Triage: Triage a huge photo and video library without moving or deleting a single file.">
+</picture>
+
+<img src="https://img.shields.io/badge/status-live-7CC142?style=for-the-badge&labelColor=2A1A0E&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0M0NjM3QSIgZD0iTTEyIDFsMi42IDguNEwyMyAxMmwtOC40IDIuNkwxMiAyM2wtMi42LTguNEwxIDEybDguNC0yLjZ6Ii8+PC9zdmc+" alt="Status: live">
+
+<img src="https://img.shields.io/badge/PowerShell-2A1A0E?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzUzOTFGRSIgZD0iTTQuNiAzaDE4LjJjLjggMCAxLjMuNyAxLjEgMS40bC0zLjQgMTUuMmMtLjIuOC0uOSAxLjQtMS43IDEuNEguNmMtLjggMC0xLjMtLjctMS4xLTEuNEwzIDQuNEMzLjEgMy42IDMuOCAzIDQuNiAzeiIvPjxwYXRoIGZpbGw9IiNGREY4RjQiIGQ9Ik02LjIgNy4ybDYuMiA0LjYtNy42IDUgLjktMS42IDQuNi0zLjItNC41LTMuMnpNMTIgMTUuNmg1LjJsLS40IDEuNmgtNS4yeiIvPjwvc3ZnPg==" alt="PowerShell">
+<img src="https://img.shields.io/badge/Windows-2A1A0E?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzNDQThGMiIgZD0iTTEgMy41bDktMS4yVjExSDF6TTExLjIgMi4xTDIzIC41VjExSDExLjJ6TTEgMTIuMmg5djguN2wtOS0xLjN6TTExLjIgMTIuMkgyM3YxMS4zbC0xMS44LTEuNnoiLz48L3N2Zz4=" alt="Windows">
+<img src="https://img.shields.io/badge/Claude-2A1A0E?style=for-the-badge&logo=claude&logoColor=D97757" alt="Claude">
+
+<br>
+
+</div>
 
 Safety-first PowerShell tools for sorting out a huge cloud-synced photo and video library on Windows, without moving or deleting a single file until a person has decided.
 
 Designed and product-managed by Junia Janvier, built in partnership with Claude (Anthropic).
+
+<p align="center"><img src=".github/brand/divider.svg" width="100%" alt=""></p>
 
 ## The problem
 
@@ -16,6 +33,8 @@ That setup creates three traps:
 
 The goal was a triage workflow that answers "what is taking up the space, and what should go?" while guaranteeing that nothing changes until a human makes the call in the Photos app.
 
+<p align="center"><img src=".github/brand/divider.svg" width="100%" alt=""></p>
+
 ## Safety principles
 
 **Nothing moves, nothing deletes.** Every script follows these rules:
@@ -28,6 +47,8 @@ The goal was a triage workflow that answers "what is taking up the space, and wh
 | Staging is opt-in and reversible | `Find-Duplicates.ps1` is report-only by default. With `-StageTo` it moves extra copies into a holding folder, writes a move log, and `Restore-StagedFiles.ps1` puts everything back. |
 | Online-only files are protected | Staging skips cloud placeholders unless `-IncludeOnlineOnly` is set. |
 | Rehearse first | Every move supports `-WhatIf` and `-Confirm`. A demo library lets anyone run the full pipeline on fake files. |
+
+<p align="center"><img src=".github/brand/divider.svg" width="100%" alt=""></p>
 
 ## What it produces
 
@@ -62,6 +83,8 @@ The duplicate move log has one row per file:
 | OriginalLocation | NowAt | OriginalKeptAt | SizeMB | Result |
 |---|---|---|---|---|
 | `...\Old Phone Backup\IMG_0101 (1).MOV` | `...\_staged\Old Phone Backup\IMG_0101 (1).MOV` | `...\Camera Roll\2024\IMG_0101.MOV` | 4300.8 | Moved |
+
+<p align="center"><img src=".github/brand/divider.svg" width="100%" alt=""></p>
 
 ## How to run
 
@@ -127,6 +150,8 @@ Use this for extra copies that live **outside** the synced library, such as old 
 
 Empty the staging folder by hand only after reviewing the move log.
 
+<p align="center"><img src=".github/brand/divider.svg" width="100%" alt=""></p>
+
 ## Design decisions
 
 | Decision | Why |
@@ -144,6 +169,8 @@ Empty the staging folder by hand only after reviewing the move log.
 | `[IO.Path]::Combine` instead of `Join-Path` | `Join-Path` inside a helper function hit positional-parameter binding errors in Windows PowerShell 5.1. |
 | Windows PowerShell 5.1 compatible | Runs on any Windows 10 or 11 machine with nothing to install. No ternaries or null-coalescing operators. |
 | Demo with a size map instead of large dummy files | The demo shows multi-gigabyte behavior with a few kilobytes on disk. |
+
+<p align="center"><img src=".github/brand/divider.svg" width="100%" alt=""></p>
 
 ## Repository layout
 
@@ -165,6 +192,14 @@ photo-video-triage/
     Restore-StagedFiles.ps1
 ```
 
+<p align="center"><img src=".github/brand/divider.svg" width="100%" alt=""></p>
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+<p align="center"><img src=".github/brand/divider.svg" width="100%" alt=""></p>
+
+<p align="center">
+  <a href="https://juniajanvier.com"><img src=".github/brand/footer.svg" width="520" alt="Junia Janvier · The Education Alchemist · Providence, RI"></a>
+</p>
