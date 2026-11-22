@@ -1,0 +1,17 @@
+# Script output can contain real file names and folder paths. Keep it out of the repo.
+*.csv
+*.lnk
+review/
+_staged/
+_to_delete/
+photo-video-triage-demo*/
+READ ME FIRST.txt
+
+# Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Editors
+.vscode/
+*.swp
